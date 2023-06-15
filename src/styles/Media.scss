@@ -1,0 +1,24 @@
+@media only screen and (max-width: 1000px) {
+  .lib {
+    padding-bottom: 17rem !important;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .cards {
+    grid-template-columns: auto !important;
+    justify-content: center;
+  }
+  .resourses {
+    padding-top: 22% !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .resourses {
+    padding-top: 30% !important;
+  }
+  body {
+    font-size: 20px !important;
+  }
+}
