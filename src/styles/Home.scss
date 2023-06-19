@@ -729,17 +729,11 @@ a.menu-toggle {
   margin-bottom: 3.6rem;
   position: relative;
   color: #252525;
+  padding-top: 30px;
 
-  &::after {
-    display: block;
-    background-color: rgb(255, 0, 159);
-    width: 120px;
-    height: 3px;
-    content: '\0020';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    margin-left: -60px;
+  .lead {
+    color: #818181;
+    font-size: 18px;
   }
 }
 
@@ -774,7 +768,7 @@ a.menu-toggle {
 
 .process-content .image-part {
   margin: 0 auto;
-  height: 360px;
+  height: 250px;
   background-image: url("../images/appdesign.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -887,19 +881,8 @@ a.menu-toggle {
   margin-bottom: 3.6rem;
   position: relative;
   color: #252525;
-  &::after {
-    display: block;
-    background-color: rgb(255, 0, 159);
-    width: 120px;
-    height: 3px;
-    content: '\0020';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    margin-left: -60px;
-  }
-
 }
+
 #testimonials .flex-container {
   width: 80%;
   max-width: 250px;
