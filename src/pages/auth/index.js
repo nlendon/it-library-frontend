@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import Logo from '../../images/logo.png';
 import {message} from 'antd';
 
-const AdminSignIn = () => {
+const Auth = () => {
 
     const [messageApi, contextHolder] = message.useMessage();
     const [email, setEmail] = useState("");
@@ -84,4 +84,4 @@ const AdminSignIn = () => {
     );
 }
 
-export default AdminSignIn;
+export default Auth;

@@ -594,8 +594,7 @@ a.menu-toggle {
   font-size: 5.4rem;
   line-height: 1.334;
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 0;
   letter-spacing: 2px;
   text-shadow: 1px 1px 1px #000;
 }
@@ -726,9 +725,22 @@ a.menu-toggle {
 }
 
 #process {
-  padding-top: 12rem;
-  padding-bottom: 10rem;
-  overflow: hidden;
+  padding-bottom: 2.1rem;
+  margin-bottom: 3.6rem;
+  position: relative;
+  color: #252525;
+
+  &::after {
+    display: block;
+    background-color: rgb(255, 0, 159);
+    width: 120px;
+    height: 3px;
+    content: '\0020';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -60px;
+  }
 }
 
 .process-content {
@@ -875,20 +887,19 @@ a.menu-toggle {
   margin-bottom: 3.6rem;
   position: relative;
   color: #252525;
-}
+  &::after {
+    display: block;
+    background-color: rgb(255, 0, 159);
+    width: 120px;
+    height: 3px;
+    content: '\0020';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -60px;
+  }
 
-#testimonials .h01::after {
-  display: block;
-  background-color: rgb(255, 0, 159);
-  width: 120px;
-  height: 3px;
-  content: '\0020';
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  margin-left: -60px;
 }
-
 #testimonials .flex-container {
   width: 80%;
   max-width: 250px;
