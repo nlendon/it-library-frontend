@@ -3,13 +3,16 @@ import {AiOutlineArrowDown} from "react-icons/ai"
 import Footer from "../../components/main/Footer";
 import Header from "../../components/main/Header";
 import TextAnimation from "../../helpers/TextAnimation";
-import {getAbout} from "../../api/HomeApi";
-import {Form, Input} from "antd";
+import {createContact, getAbout} from "../../api/HomeApi";
+import {Button, Form, Input, message} from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 const Home = () => {
 
     const [about, setAbout] = useState({leftHand: null, rightHand: null});
+    const [messageApi, contextHolder] = message.useMessage();
+    const [loading, setLoading] = useState(false);
+    const [form] = Form.useForm();
 
     useEffect(() => {
         document.title = "IT-library | Հիմնական ";
@@ -21,8 +24,28 @@ const Home = () => {
         setAbout(aboutGet[0]);
     }
 
+    const sendMessage = async (data) => {
+        setLoading(true);
+        if (!data.email) alert("Invalid email");
+        const info = await createContact(data);
+        if (info.message.includes("Exceeded the limit")) {
+            messageApi.open({
+                type: "error",
+                content: info.message
+            });
+        } else {
+            messageApi.open({
+                type: "info",
+                content: info.message
+            });
+        }
+        setLoading(false);
+        form.resetFields();
+    }
+
     return (
         <div>
+            {contextHolder}
             <Header/>
             <section id={'intro'}>
                 <div className="shadow-overlay"></div>
@@ -60,24 +83,38 @@ const Home = () => {
                     <div className="col-twelve">
                         <h2 className="h01">Կապ Մեզ Հետ</h2>
                         <Form
+                            form={form}
+                            onFinish={(data) => sendMessage(data)}
                             labelCol={{
-                                span: 4,
+                                span: 6,
                             }}
                             wrapperCol={{
                                 span: 14,
                             }}
-                            layout="horizontal">
-                            <Form.Item label={'Անուն Ազգանուն'} required={true}>
-                                <Input/>
+                            style={{
+                                padding: "30px",
+                                borderRadius: "5px",
+                                background: "rgb(209 209 209)"
+                            }}
+                        >
+                            <Form.Item label={'Անուն Ազգանուն'} name={"sender"}
+                                       rules={[{required: true, message: 'Խնդրում ենք լրացնել այս դաշտը!'}]}>
+                                <Input placeholder={"Հակոբ Հակոբյան"}/>
                             </Form.Item>
-                            <Form.Item label={'Էլ․ Հասցե'} required={true}>
-                                <Input/>
+                            <Form.Item label={'Էլ․ Հասցե'} name={"email"}
+                                       rules={[{required: true, message: 'Խնդրում ենք լրացնել այս դաշտը!'}]}>
+                                <Input type={"email"} placeholder={"hakobyanhakob@gmail.com"}/>
                             </Form.Item>
-                            <Form.Item label={'Հեռախոսահամար'}>
-                                <Input/>
+                            <Form.Item label={'Հեռախոսահամար'} name={'phoneNumber'}>
+                                <Input type={''} addonBefore={"+374"} placeholder={"012-345-678"}/>
                             </Form.Item>
-                            <Form.Item label={'Անուն Ազգանուն'} required={true}>
-                                <TextArea/>
+                            <Form.Item label={'Հաղորդագրություն'} name={"message"}
+                                       rules={[{required: true, message: 'Խնդրում ենք լրացնել այս դաշտը!'}]}>
+                                <TextArea placeholder={"Բարև ձեզ, ես դիմում եմ ձեզ․․․"}/>
+                            </Form.Item>
+                            <Form.Item wrapperCol={{offset: 4, span: 16}}>
+                                <Button style={{margin: 0}} type={"submit"}
+                                        htmlType={"submit"} loading={loading}>Ուղարկել</Button>
                             </Form.Item>
                         </Form>
                     </div>

@@ -1,0 +1,64 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Test",
+      "style": {
+        "fill": "#ff0069"
+      },
+      "icon": {
+        "img": "http://localhost:5001/images/it-image.png"
+      }
+    },
+    {
+      "id": "2",
+      "label": "Test",
+      "style": {
+        "fill": "#000"
+      },
+      "icon": {
+        "img": "http://localhost:5001/images/it-image.png"
+      }
+    },
+    {
+      "id": "3",
+      "label": "Test",
+      "style": {
+        "fill": "#e3e3e3e"
+      },
+      "icon": {
+        "img": "http://localhost:5001/images/it-image.png"
+      }
+    },
+    {
+      "id": "4",
+      "label": "Test",
+      "style": {
+        "fill": "#FF0000"
+      },
+      "icon": {
+        "img": "http://localhost:5001/images/it-image.png"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "source": "1",
+      "target": "2",
+      "label": "working_for"
+    },
+    {
+      "id": "edge-2",
+      "source": "1",
+      "target": "3",
+      "label": "working_for"
+    },
+    {
+      "id": "edge-3",
+      "source": "1",
+      "target": "4",
+      "label": "working_for"
+    }
+  ]
+}
